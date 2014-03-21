@@ -1,0 +1,56 @@
+ss_membre_recherche:
+    pattern:  /recherche-membre-{id}
+    defaults: { _controller: ssMembreBundle:Membre:recherche }
+    requirements:
+        id:  \d+
+
+ss_membre_demander_ami:
+    pattern:  /demande-ami-membre-{id}
+    defaults: { _controller: ssMembreBundle:Membre:demanderAmi }
+    requirements:
+        id:  \d+
+    
+ss_membre_liste_ami:
+    pattern:  /liste-amis-{id}
+    defaults: { _controller: SsMembreBundle:Membre:listeAmis }
+    requirements:
+        id:  \d+
+    
+ss_membre_creer_groupe:
+    pattern:  /creer-groupe
+    defaults: { _controller: SsMembreBundle:Membre:creerGroupe }
+    
+ss_membre_ajouter_ami_groupe:
+    pattern:  /ajouter-ami-groupe
+    defaults: { _controller: SsMembreBundle:Membre:ajoutAmiGroupe }
+    
+ss_membre_supprimer_ami_groupe:
+    pattern:  /supprimer-ami-groupe
+    defaults: { _controller: SsMembreBundle:Membre:supprimerAmiGroupe }
+    
+    
+ss_membre_bannir:
+    pattern:  /bannir-{id}
+    defaults: { _controller: SsMembreBundle:Membre:bannir }
+    requirements:
+        id:  \d+
+
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+ 
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+ 
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+ 
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+ 
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile

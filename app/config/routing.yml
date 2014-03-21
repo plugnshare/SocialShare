@@ -1,0 +1,8 @@
+ss_fichier:
+    resource: "@SsFichierBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ss_membre:
+    resource: "@SsMembreBundle/Resources/config/routing.yml"
+    prefix:   /
+

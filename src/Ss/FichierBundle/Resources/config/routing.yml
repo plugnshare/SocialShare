@@ -1,0 +1,17 @@
+ss_fichier_dossier:
+    pattern:  /dossier-{id}-{emplacement}
+    defaults: { _controller: SsFichierBundle:Fichier:dossier }
+    requirements:
+        id:  \d+
+
+ss_fichier_uploader:
+    pattern:  /uploader-{id}-{emplacement}
+    defaults: { _controller: SsFichierBundle:Fichier:uploader }
+    requirements:
+        id:  \d+
+
+ss_fichier_telecharger:
+    pattern:  /telecharger-{id}-{emplacement}
+    defaults: { _controller: SsFichierBundle:Fichier:telecharger }
+    requirements:
+        id:  \d+

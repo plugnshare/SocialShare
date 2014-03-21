@@ -1,0 +1,7 @@
+parameters:
+#    ss_membre.example.class: Ss\MembreBundle\Example
+
+services:
+#    ss_membre.example:
+#        class: %ss_membre.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
