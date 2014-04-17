@@ -12,9 +12,36 @@ class MembreController extends \EnhancedProxy06b87f87_154c6a1daef2eaa09ebbc3e957
 {
     private $__CGInterception__loader;
 
+    public function profilAction($id)
+    {
+        $ref = new \ReflectionMethod('Ss\\MembreBundle\\Controller\\MembreController', 'profilAction');
+        $interceptors = $this->__CGInterception__loader->loadInterceptors($ref, $this, array($id));
+        $invocation = new \CG\Proxy\MethodInvocation($ref, $this, array($id), $interceptors);
+
+        return $invocation->proceed();
+    }
+
+    public function demanderAmiAction($id)
+    {
+        $ref = new \ReflectionMethod('Ss\\MembreBundle\\Controller\\MembreController', 'demanderAmiAction');
+        $interceptors = $this->__CGInterception__loader->loadInterceptors($ref, $this, array($id));
+        $invocation = new \CG\Proxy\MethodInvocation($ref, $this, array($id), $interceptors);
+
+        return $invocation->proceed();
+    }
+
     public function bannirAction($id)
     {
         $ref = new \ReflectionMethod('Ss\\MembreBundle\\Controller\\MembreController', 'bannirAction');
+        $interceptors = $this->__CGInterception__loader->loadInterceptors($ref, $this, array($id));
+        $invocation = new \CG\Proxy\MethodInvocation($ref, $this, array($id), $interceptors);
+
+        return $invocation->proceed();
+    }
+
+    public function accepterAmiAction($id)
+    {
+        $ref = new \ReflectionMethod('Ss\\MembreBundle\\Controller\\MembreController', 'accepterAmiAction');
         $interceptors = $this->__CGInterception__loader->loadInterceptors($ref, $this, array($id));
         $invocation = new \CG\Proxy\MethodInvocation($ref, $this, array($id), $interceptors);
 

@@ -11,7 +11,9 @@ ss_fichier_uploader:
         id:  \d+
 
 ss_fichier_telecharger:
-    pattern:  /telecharger-{id}-{emplacement}
+    pattern:  /telecharger-{ext}-{fichier}
     defaults: { _controller: SsFichierBundle:Fichier:telecharger }
-    requirements:
-        id:  \d+
+
+ss_fichier_index:
+    pattern:  /
+    defaults: { _controller: SsFichierBundle:Fichier:index }

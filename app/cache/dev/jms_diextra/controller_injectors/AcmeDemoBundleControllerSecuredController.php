@@ -11,9 +11,9 @@ class SecuredController__JMSInjector
 {
     public static function inject($container) {
         require_once '/var/www/SS/app/cache/dev/jms_diextra/proxies/Acme-DemoBundle-Controller-SecuredController.php';
-        $b = new \JMS\AopBundle\Aop\InterceptorLoader($container, array('Acme\\DemoBundle\\Controller\\SecuredController' => array('helloadminAction' => array(0 => 'security.access.method_interceptor'))));
+        $c = new \JMS\AopBundle\Aop\InterceptorLoader($container, array('Acme\\DemoBundle\\Controller\\SecuredController' => array('helloadminAction' => array(0 => 'security.access.method_interceptor'))));
         $instance = new \EnhancedProxy06b87f87_72114c0f8683bcc2a66ceccb136abe5a78f8577e\__CG__\Acme\DemoBundle\Controller\SecuredController();
-        $instance->__CGInterception__setLoader($b);
+        $instance->__CGInterception__setLoader($c);
         return $instance;
     }
 }

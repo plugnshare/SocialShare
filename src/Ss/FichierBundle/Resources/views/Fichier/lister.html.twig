@@ -1,0 +1,40 @@
+{% extends "SsMembreBundle::layout.html.twig" %}
+ 
+{% block title %}
+  Navigation PNS Drive - {{ parent() }}
+{% endblock %}
+ 
+{% block content %}
+	<h2>PNS Drive de {{ utilisateur.username }}</h2>
+	<h3>Dossier {{ dos }}</h3>
+
+	{% if emplacement_parent != '' %}
+		<p class="dossier"><a href="{{ path('ss_fichier_dossier', { 'id': utilisateur.id, 'emplacement': emplacement_parent })}}">[Dossier] ..</a></p>
+	{% endif %}
+
+	{% if vide > 1 %}
+		{% for dossier in dossiers %}
+			<p class="dossier"><a href="{{ path('ss_fichier_dossier', { 'id': utilisateur.id, 'emplacement': emplacement ~ '\\' ~ dossier })}}">[Dossier] {{ dossier }}</a></p>
+		{% endfor %}
+		
+		{% for fichier in fichiers %}
+			{% set tmp = fichier|split('.') %}
+			{% set ext = tmp.1 %}
+			{% set fichier = tmp.0 %}
+			<p class="fichier"><a href="{{ path('ss_fichier_telecharger', { 'ext': ext, 'fichier': emplacement ~ '\\' ~ fichier })}}">[Fichier] {{ fichier }}</a></p>
+		{% endfor %}
+	{% else %}
+		<p>Le dossier est vide.</p>
+	{% endif %}
+	
+	<fieldset>
+		<legend> Uploader un fichier </legend>
+			<form method="post" {{ form_enctype(form) }}>
+				{{ form_widget(form) }}
+				<input type="submit" class="btn btn-primary" />
+			</form>
+		</fieldset>
+  </form>
+	
+ 
+{% endblock content %}

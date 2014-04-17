@@ -12,4 +12,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class UtilisateurRepository extends EntityRepository
 {
+	public function findByUsernameLike($username)
+	{
+		// On récupère le QueryBuilder vide de l'EntityManager
+		$qb = $this->_em->createQueryBuilder();
+		
+		$qb->select('u')
+			->from('SsMembreBundle:Utilisateur', 'u')
+			//~ ->where('u.username LIKE \'%:username%\'')
+			->where('u.username LIKE :username')
+			->setParameter('username', '%'. $username . '%');
+		
+		// On récupère la Query à partir du QueryBuilder
+		$query = $qb->getQuery();
+		
+		// On récupère les résultats à partir de la Query
+		$resultats = $query->getResult();
+		
+		// On retourne ces résultats
+		return $resultats;
+	}
 }

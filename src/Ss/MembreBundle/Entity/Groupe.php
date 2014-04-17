@@ -22,11 +22,10 @@ class Groupe
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_user", type="integer")
+     * @ORM\ManyToOne(targetEntity="Ss\MembreBundle\Entity\Utilisateur")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $idUser;
+    private $proprietaire;
 
     /**
      * @var string
@@ -42,6 +41,20 @@ class Groupe
      */
     private $description;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Ss\MembreBundle\Entity\Utilisateur")
+     */
+    private $membres;
+    
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->membres = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 
     /**
      * Get id
@@ -51,29 +64,6 @@ class Groupe
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set idUser
-     *
-     * @param integer $idUser
-     * @return Groupe
-     */
-    public function setIdUser($idUser)
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return integer 
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
     }
 
     /**
@@ -120,5 +110,61 @@ class Groupe
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set proprietaire
+     *
+     * @param \Ss\MembreBundle\Entity\Utilisateur $proprietaire
+     * @return Groupe
+     */
+    public function setProprietaire(\Ss\MembreBundle\Entity\Utilisateur $proprietaire)
+    {
+        $this->proprietaire = $proprietaire;
+
+        return $this;
+    }
+
+    /**
+     * Get proprietaire
+     *
+     * @return \Ss\MembreBundle\Entity\Utilisateur 
+     */
+    public function getProprietaire()
+    {
+        return $this->proprietaire;
+    }
+
+    /**
+     * Add membres
+     *
+     * @param \Ss\MembreBundle\Entity\Utilisateur $membres
+     * @return Groupe
+     */
+    public function addMembre(\Ss\MembreBundle\Entity\Utilisateur $membres)
+    {
+        $this->membres[] = $membres;
+
+        return $this;
+    }
+
+    /**
+     * Remove membres
+     *
+     * @param \Ss\MembreBundle\Entity\Utilisateur $membres
+     */
+    public function removeMembre(\Ss\MembreBundle\Entity\Utilisateur $membres)
+    {
+        $this->membres->removeElement($membres);
+    }
+
+    /**
+     * Get membres
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMembres()
+    {
+        return $this->membres;
     }
 }

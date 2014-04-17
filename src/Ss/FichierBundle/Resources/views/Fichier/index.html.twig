@@ -1,0 +1,34 @@
+{% extends "::layout.html.twig" %}
+ 
+{% block title %}
+  Bienvenue - {{ parent() }}
+{% endblock %}
+ 
+{% block body %}
+ 
+  {# On définit un sous-titre commun à toutes les pages du bundle, par exemple #}
+  <h1>Bienvenue sur Social Share</h1>
+ 
+  <div class="welcome">
+	<p class="welcome">Bonjour internaute !
+	
+	<br />
+	<br />
+	<br />
+	
+	Social Share, le réseau social de partage de documents.<br>
+	Grâce à notre réseau social, le partage des vidéos en plus haute définition et de tous vos fichiers les plus volumineux devient possible.<br>
+	Retrouvez tous vos amis et partagez en direct !
+	
+	<br />
+	<br />
+	
+	De nos jours, suite à l’explosion du cloud informatique, de plus en plus nombreux sont les utilisateurs souhaitant disposer de leurs données partout dans le monde à n’importe quel moment. Ce mode de partage semblait être la solution idéale. Néanmoins, suite aux révélations engendrées par l’affaire PRISM, l’utilisateur s’est rendu compte que le contrôle qu’il pensait avoir sur ses données n’était qu’illusion. Cette affaire a également pointé du doigt des problèmes quant à la localisation des données avec le droit appliqué à ces dernières (qui permet dans certains cas son utilisation) mais aussi des problèmes de stockage « limité » dans la mesure où il faut débourser une certaine somme si l’on veut disposer de plus d’espace de stockage.
+	
+	<br />
+	<br />
+	
+	C’est suite à ces différentes problématiques que notre projet s’est imposé à nous. Il s’agit ici de la confrontation de plusieurs idées : celle de pouvoir disposer librement des informations en connaissant parfaitement leur localisation,  de pouvoir les modifier, de les supprimer définitivement quand bon nous semble sans craindre un usage de celles-ci par un tiers et enfin d’un partage transparent de l’information entre les différentes personnes souhaitant utiliser la solution. Nous souhaitions alors associé ces idées à la création d’un réseau social : le projet Social Share était né.
+	</p>
+  </div>
+{% endblock %}

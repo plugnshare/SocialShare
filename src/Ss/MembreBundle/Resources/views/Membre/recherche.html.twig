@@ -1,0 +1,27 @@
+{% extends "SsMembreBundle::layout.html.twig" %}
+ 
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+ 
+{% block content %}
+<div class="recherche_form">
+
+	<fieldset>
+		<legend> Rechercher des utilisateurs </legend>
+		<form method="post" {{ form_enctype(form) }}>
+			{{ form_widget(form) }}
+			<input type="submit" class="btn btn-primary" />
+		</form>
+	</fieldset>
+    
+    {% if liste_utilisateurs is not null %}
+    <h3>Utilisateurs trouvés</h3>
+		{% for utilisateur in liste_utilisateurs %}
+			<div class="utilisateur_recherche"><a href="{{ path('ss_membre_profil', { 'id': utilisateur.id })}}">{{ utilisateur.username }}</a></div>
+		{% else %}
+			<p>Aucun utilisateur ne correspond à votre recherche.</p>
+		{% endfor %}
+	{% endif %}
+</div>
+{% endblock content %}

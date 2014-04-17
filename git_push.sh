@@ -1,1 +1,1 @@
-php app/console generate:doctrine:entity
+git push 

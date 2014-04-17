@@ -22,25 +22,20 @@ class Droit
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_fichier", type="integer")
+     * @ORM\ManyToOne(targetEntity="Ss\FichierBundle\Entity\Fichier")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $idFichier;
+    private $fichier;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_usergroupe", type="integer")
+     * @ORM\ManyToOne(targetEntity="Ss\MembreBundle\Entity\Utilisateur")
      */
-    private $idUsergroupe;
+    private $utilisateurCible;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=1)
+     * @ORM\ManyToOne(targetEntity="Ss\MembreBundle\Entity\Groupe")
      */
-    private $type;
+    private $groupeCible;
 
     /**
      * @var integer
@@ -58,75 +53,6 @@ class Droit
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set idFichier
-     *
-     * @param integer $idFichier
-     * @return Droit
-     */
-    public function setIdFichier($idFichier)
-    {
-        $this->idFichier = $idFichier;
-
-        return $this;
-    }
-
-    /**
-     * Get idFichier
-     *
-     * @return integer 
-     */
-    public function getIdFichier()
-    {
-        return $this->idFichier;
-    }
-
-    /**
-     * Set idUsergroupe
-     *
-     * @param integer $idUsergroupe
-     * @return Droit
-     */
-    public function setIdUsergroupe($idUsergroupe)
-    {
-        $this->idUsergroupe = $idUsergroupe;
-
-        return $this;
-    }
-
-    /**
-     * Get idUsergroupe
-     *
-     * @return integer 
-     */
-    public function getIdUsergroupe()
-    {
-        return $this->idUsergroupe;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     * @return Droit
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string 
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**
@@ -150,5 +76,74 @@ class Droit
     public function getDroit()
     {
         return $this->droit;
+    }
+
+    /**
+     * Set fichier
+     *
+     * @param \Ss\FichierBundle\Entity\Fichier $fichier
+     * @return Droit
+     */
+    public function setFichier(\Ss\FichierBundle\Entity\Fichier $fichier)
+    {
+        $this->fichier = $fichier;
+
+        return $this;
+    }
+
+    /**
+     * Get fichier
+     *
+     * @return \Ss\FichierBundle\Entity\Fichier 
+     */
+    public function getFichier()
+    {
+        return $this->fichier;
+    }
+
+    /**
+     * Set utilisateurCible
+     *
+     * @param \Ss\MembreBundle\Entity\Utilisateur $utilisateurCible
+     * @return Droit
+     */
+    public function setUtilisateurCible(\Ss\MembreBundle\Entity\Utilisateur $utilisateurCible = null)
+    {
+        $this->utilisateurCible = $utilisateurCible;
+
+        return $this;
+    }
+
+    /**
+     * Get utilisateurCible
+     *
+     * @return \Ss\MembreBundle\Entity\Utilisateur 
+     */
+    public function getUtilisateurCible()
+    {
+        return $this->utilisateurCible;
+    }
+
+    /**
+     * Set groupeCible
+     *
+     * @param \Ss\MembreBundle\Entity\Groupe $groupeCible
+     * @return Droit
+     */
+    public function setGroupeCible(\Ss\MembreBundle\Entity\Groupe $groupeCible = null)
+    {
+        $this->groupeCible = $groupeCible;
+
+        return $this;
+    }
+
+    /**
+     * Get groupeCible
+     *
+     * @return \Ss\MembreBundle\Entity\Groupe 
+     */
+    public function getGroupeCible()
+    {
+        return $this->groupeCible;
     }
 }

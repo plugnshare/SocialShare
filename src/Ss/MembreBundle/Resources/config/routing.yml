@@ -1,12 +1,22 @@
-ss_membre_recherche:
-    pattern:  /recherche-membre-{id}
-    defaults: { _controller: ssMembreBundle:Membre:recherche }
+ss_membre_profil:
+    pattern:  /profil-{id}
+    defaults: { _controller: SsMembreBundle:Membre:profil }
     requirements:
         id:  \d+
+    
+ss_membre_recherche:
+    pattern:  /recherche-membre
+    defaults: { _controller: SsMembreBundle:Membre:recherche }
 
 ss_membre_demander_ami:
     pattern:  /demande-ami-membre-{id}
-    defaults: { _controller: ssMembreBundle:Membre:demanderAmi }
+    defaults: { _controller: SsMembreBundle:Membre:demanderAmi }
+    requirements:
+        id:  \d+
+        
+ss_membre_accepter_ami:
+    pattern:  /accepter-ami-membre-{id}
+    defaults: { _controller: SsMembreBundle:Membre:accepterAmi }
     requirements:
         id:  \d+
     
@@ -41,16 +51,16 @@ fos_user_security:
  
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
-    prefix: /profile
+    prefix: /profil
  
 fos_user_register:
     resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
-    prefix: /register
+    prefix: /inscription
  
 fos_user_resetting:
     resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
     prefix: /resetting
  
-fos_user_change_password:
+fos_user_change_paSsword:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
-    prefix: /profile
+    prefix: /profil

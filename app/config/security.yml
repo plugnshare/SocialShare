@@ -5,7 +5,7 @@ jms_security_extra:
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
-        Ss\MembreBundle\Entity\User: sha512
+        Ss\MembreBundle\Entity\Utilisateur: sha512
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER

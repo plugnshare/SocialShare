@@ -1,0 +1,25 @@
+{# Si l'utilisateur est connecté, on affiche son menu, sinon on lui propose de se connecter #}
+{% if app.user is null %}
+	<h3>Bienvenue, invité</h3>
+	<ul>
+	  <li><a href="{{ path('fos_user_security_login')}}">Connexion</a></li>
+	  <li><a href="{{ path('fos_user_registration_register')}}">Inscription</a></li>
+	</ul>
+{% else %}
+  <h3>Bienvenue, {{ app.user.username }}</h3>
+<ul>
+	<li><b><a href="{{ path('ss_fichier_index')}}">Accueil</a></b></li>
+</ul>
+  <ul>
+	  <li><a href="{{ path('ss_membre_profil',{'id':app.user.id})}}">Profil</a></li>
+	  <li><a href="{{ path('fos_user_profile_edit')}}">Editer le profil</a></li>
+	  <li><a href="{{ path('fos_user_security_logout')}}">Déconnexion</a></li>
+  </ul>
+{% endif %}
+</ul>
+
+
+<ul>
+	<li><a href="{{ path('ss_membre_recherche')}}">Rechercher un utilisateur</a></li>
+</ul>
+

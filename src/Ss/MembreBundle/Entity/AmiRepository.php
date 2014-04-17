@@ -12,4 +12,110 @@ use Doctrine\ORM\EntityRepository;
  */
 class AmiRepository extends EntityRepository
 {
+	public function findByAmi($id)
+	{
+		// On récupère le QueryBuilder vide de l'EntityManager
+		$qb = $this->_em->createQueryBuilder();
+		
+		$qb->select('a')
+			->from('SsMembreBundle:Ami', 'a')
+			->where('(a.utilisateur1 = :id OR a.utilisateur2 = :id) AND a.etat = :etat')
+			->setParameter('id', $id)
+			->setParameter('etat', 'ami');
+		
+		// On récupère la Query à partir du QueryBuilder
+		$query = $qb->getQuery();
+		
+		// On récupère les résultats à partir de la Query
+		$resultats = $query->getResult();
+		
+		// On retourne ces résultats
+		return $resultats;
+	}
+	
+	public function findByAmiDemandes($id)
+	{
+		// On récupère le QueryBuilder vide de l'EntityManager
+		$qb = $this->_em->createQueryBuilder();
+		
+		$qb->select('a')
+			->from('SsMembreBundle:Ami', 'a')
+			->where('(a.utilisateur1 = :id OR a.utilisateur2 = :id) AND a.etat = :etat')
+			->setParameter('id', $id)
+			->setParameter('etat', 'en cours');
+		
+		// On récupère la Query à partir du QueryBuilder
+		$query = $qb->getQuery();
+		
+		// On récupère les résultats à partir de la Query
+		$resultats = $query->getResult();
+		
+		// On retourne ces résultats
+		return $resultats;
+	}
+	
+	public function findByDemande($id1, $id2)
+	{
+		// On récupère le QueryBuilder vide de l'EntityManager
+		$qb = $this->_em->createQueryBuilder();
+		
+		$qb->select('a')
+			->from('SsMembreBundle:Ami', 'a')
+			->where('(a.utilisateur1 = :id1 AND a.utilisateur2 = :id2) OR (a.utilisateur1 = :id2 AND a.utilisateur2 = :id1)')
+			->setParameter('id1', $id1)
+			->setParameter('id2', $id2);
+		
+		// On récupère la Query à partir du QueryBuilder
+		$query = $qb->getQuery();
+		
+		// On récupère les résultats à partir de la Query
+		$resultats = $query->getResult();
+		
+		// On retourne ces résultats
+		return $resultats;
+	}
+	
+	public function findByDemandeEnCours($id1, $id2)
+	{
+		// On récupère le QueryBuilder vide de l'EntityManager
+		$qb = $this->_em->createQueryBuilder();
+		
+		$qb->select('a')
+			->from('SsMembreBundle:Ami', 'a')
+			->where('((a.utilisateur1 = :id1 AND a.utilisateur2 = :id2) OR (a.utilisateur1 = :id2 AND a.utilisateur2 = :id1)) AND a.etat = :etat')
+			->setParameter('id1', $id1)
+			->setParameter('id2', $id2)
+			->setParameter('etat', 'en cours');
+		
+		// On récupère la Query à partir du QueryBuilder
+		$query = $qb->getQuery();
+		
+		// On récupère les résultats à partir de la Query
+		$resultats = $query->getResult();
+		
+		// On retourne ces résultats
+		return $resultats;
+	}
+	
+	public function findByAmiValide($id1, $id2)
+	{
+		// On récupère le QueryBuilder vide de l'EntityManager
+		$qb = $this->_em->createQueryBuilder();
+		
+		$qb->select('a')
+			->from('SsMembreBundle:Ami', 'a')
+			->where('((a.utilisateur1 = :id1 AND a.utilisateur2 = :id2) OR (a.utilisateur1 = :id2 AND a.utilisateur2 = :id1)) AND a.etat = :etat')
+			->setParameter('id1', $id1)
+			->setParameter('id2', $id2)
+			->setParameter('etat', 'ami');
+		
+		// On récupère la Query à partir du QueryBuilder
+		$query = $qb->getQuery();
+		
+		// On récupère les résultats à partir de la Query
+		$resultats = $query->getResult();
+		
+		// On retourne ces résultats
+		return $resultats;
+	}
 }

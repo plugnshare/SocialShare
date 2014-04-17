@@ -1,0 +1,76 @@
+{% extends "SsMembreBundle::layout.html.twig" %}
+ 
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+ 
+{% block content %}
+	<div class="demande_ami">
+		<h3>Demandes d'ami</h3>
+		{% if app.user.id == user.id %}
+			{% for ami in demandes_ami %}
+			  <div class="exam_frame">
+					{% if app.user.id == ami.utilisateur1.id %}
+						<p><a href="{{ path('ss_membre_accepter_ami', { 'id': ami.utilisateur2.id })}}">{{ ami.utilisateur2.username }}</a></p>
+					{% else %}
+						<p><a href="{{ path('ss_membre_accepter_ami', { 'id': ami.utilisateur1.id })}}">{{ ami.utilisateur1.username }}</a></p>
+					{% endif %}
+			  </div>
+			{% else %}
+				Pas de nouvelle demande d'ami.
+			{% endfor %}
+		{% elseif deja_ami == 1 %}
+			Vous êtes ami avec {{ user.username }}.
+		{% elseif deja_ami == 2 %}
+			Votre demande est en attente.
+		{% else %}
+			<a href="{{ path('ss_membre_demander_ami', { 'id': user.id })}}">Demander en ami</a>
+		{% endif %}
+	</div>
+	
+	<h3>Informations</h3>
+	<div class="profil_infos">
+		<p><u>Pseudo</u>: {{ user.username }}</p>
+		<p><u>Mail</u>: {{ user.email }}</p>
+		<p><u>Prénom</u>: {{ user.prenom }}</p>
+		<p><u>Nom</u>: {{ user.nom }}</p>
+		<p><u>Genre</u>: {{ user.genre }}</p>
+		<p><u>Date de naissance</u>: {{ user.dateNaissance|date('d/m/Y') }}</p>
+		<p><u>Description</u>: {{ user.description }}</p>
+		{# <p>Droits: {{ user.getRoleTraduit }}</p> #}
+	</div>
+
+	<h3>Liste d'amis</h3>
+	{% for ami in listeAmis %}
+	  <div class="liste_amis">
+			{% if user.id == ami.utilisateur1.id %}
+				<p><a href="{{ path('ss_membre_profil', { 'id': ami.utilisateur2.id })}}">{{ ami.utilisateur2.username }}</a></p>
+			{% else %}
+				<p><a href="{{ path('ss_membre_profil', { 'id': ami.utilisateur1.id })}}">{{ ami.utilisateur1.username }}</a></p>
+			{% endif %}
+	  </div>
+	{% else %}
+		<p class="exam_frame no_exam">Ce membre n'a pas d'ami.</p>
+	{% endfor %}
+	
+	<h3>Liste de publications</h3>
+	{% if (deja_ami == 1) or (app.user.id == user.id) %}
+		<p><a href="{{ path('ss_fichier_dossier', { 'id': user.id, 'emplacement': user.id })}}">Voir le PNS Drive de {{ user.username }}</a></p>
+		
+		{% for publication in publications %}
+		  <div class="publica">
+			<div class="float_left">
+				<p class="publication_titre"><u>Fichier</u>: {{ publication.fichier.nom }}</p> {# AJOUTER LIEN SUR FICHIER ICI #}
+				<p class="publication_description"><u>Description</u>: {{ publication.description }}</p>
+				<br>
+				<p class="ami_dans_liste">Posté par {{ publication.utilisateur.username }}, le {{ publication.datePublication|date('d/m/Y à H:i:s') }}</p>
+			</div>
+		  </div>
+		{% else %}
+			<p class="exam_frame no_exam">Ce membre n'a aucune publication.</p>
+		{% endfor %}
+	{% else %}
+		<p class="exam_frame no_exam">Vous n'avez pas le droit d'accéder au publications de {{ user.username }}.</p>
+	{% endif %}
+ 
+{% endblock content %}

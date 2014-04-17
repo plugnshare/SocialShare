@@ -10,7 +10,10 @@ namespace Ss\FichierBundle\Controller;
 class FichierController__JMSInjector
 {
     public static function inject($container) {
-        $instance = new \Ss\FichierBundle\Controller\FichierController();
+        require_once '/var/www/SS/app/cache/dev/jms_diextra/proxies/Ss-FichierBundle-Controller-FichierController.php';
+        $a = new \JMS\AopBundle\Aop\InterceptorLoader($container, array('Ss\\FichierBundle\\Controller\\FichierController' => array('dossierAction' => array(0 => 'security.access.method_interceptor'), 'telechargerAction' => array(0 => 'security.access.method_interceptor'))));
+        $instance = new \EnhancedProxy7e71fbef_8324223486c3fd91459bd17b5ca3e126c26f9a1b\__CG__\Ss\FichierBundle\Controller\FichierController();
+        $instance->__CGInterception__setLoader($a);
         return $instance;
     }
 }

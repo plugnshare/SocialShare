@@ -11,7 +11,7 @@ class MembreController__JMSInjector
 {
     public static function inject($container) {
         require_once '/var/www/SS/app/cache/dev/jms_diextra/proxies/Ss-MembreBundle-Controller-MembreController.php';
-        $a = new \JMS\AopBundle\Aop\InterceptorLoader($container, array('Ss\\MembreBundle\\Controller\\MembreController' => array('bannirAction' => array(0 => 'security.access.method_interceptor'))));
+        $a = new \JMS\AopBundle\Aop\InterceptorLoader($container, array('Ss\\MembreBundle\\Controller\\MembreController' => array('profilAction' => array(0 => 'security.access.method_interceptor'), 'demanderAmiAction' => array(0 => 'security.access.method_interceptor'), 'accepterAmiAction' => array(0 => 'security.access.method_interceptor'), 'bannirAction' => array(0 => 'security.access.method_interceptor'))));
         $instance = new \EnhancedProxy06b87f87_154c6a1daef2eaa09ebbc3e95753ac49b6e3370e\__CG__\Ss\MembreBundle\Controller\MembreController();
         $instance->__CGInterception__setLoader($a);
         return $instance;

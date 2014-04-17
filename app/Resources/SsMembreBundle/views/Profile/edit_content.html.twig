@@ -1,0 +1,46 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<fieldset>
+	<legend> Edition du profil </legend>
+		
+	<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+		{{ form_errors(form) }}
+		
+		{{ form_label(form.username, 'Pseudo') }}
+		{{ form_errors(form.username) }}
+		{{ form_widget(form.username) }}
+		
+		{{ form_label(form.email, 'Mail') }}
+		{{ form_errors(form.email) }}
+		{{ form_widget(form.email) }}
+		
+		{{ form_label(form.current_password, 'Mot de passe') }}
+		{{ form_errors(form.current_password) }}
+		{{ form_widget(form.current_password) }}
+		
+		{{ form_label(form.prenom, 'Prénom') }}
+		{{ form_errors(form.prenom) }}
+		{{ form_widget(form.prenom) }}
+		
+		{{ form_label(form.nom, 'Nom') }}
+		{{ form_errors(form.nom) }}
+		{{ form_widget(form.nom) }}
+		
+		{{ form_label(form.date_naissance, 'Date de naissance') }}
+		{{ form_errors(form.date_naissance) }}
+		{{ form_widget(form.date_naissance) }}
+		
+		{{ form_label(form.genre, 'Genre') }}
+		{{ form_errors(form.genre) }}
+		{{ form_widget(form.genre) }}
+		
+		{{ form_label(form.description, 'Description') }}
+		{{ form_errors(form.description) }}
+		{{ form_widget(form.description) }}
+		
+		
+		{{ form_rest(form) }}
+	
+		<input type="submit" value="Envoyer" />
+	</form>
+</fieldset>

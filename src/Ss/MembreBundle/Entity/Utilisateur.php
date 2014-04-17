@@ -25,13 +25,6 @@ class Utilisateur extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="pseudo", type="string", length=255)
-     */
-    protected $pseudo;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="nom", type="string", length=255)
      */
     protected $nom;
@@ -42,13 +35,6 @@ class Utilisateur extends BaseUser
      * @ORM\Column(name="prenom", type="string", length=255)
      */
     protected $prenom;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mail", type="string", length=255)
-     */
-    protected $mail;
 
     /**
      * @var \DateTime
@@ -71,13 +57,6 @@ class Utilisateur extends BaseUser
      */
     protected $description;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="verification", type="boolean")
-     */
-    protected $verification;
-
 
     /**
      * Get id
@@ -87,29 +66,6 @@ class Utilisateur extends BaseUser
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set pseudo
-     *
-     * @param string $pseudo
-     * @return Utilisateur
-     */
-    public function setPseudo($pseudo)
-    {
-        $this->pseudo = $pseudo;
-
-        return $this;
-    }
-
-    /**
-     * Get pseudo
-     *
-     * @return string 
-     */
-    public function getPseudo()
-    {
-        return $this->pseudo;
     }
 
     /**
@@ -156,52 +112,6 @@ class Utilisateur extends BaseUser
     public function getPrenom()
     {
         return $this->prenom;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return Utilisateur
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set mail
-     *
-     * @param string $mail
-     * @return Utilisateur
-     */
-    public function setMail($mail)
-    {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    /**
-     * Get mail
-     *
-     * @return string 
-     */
-    public function getMail()
-    {
-        return $this->mail;
     }
 
     /**
@@ -273,26 +183,4 @@ class Utilisateur extends BaseUser
         return $this->description;
     }
 
-    /**
-     * Set verification
-     *
-     * @param boolean $verification
-     * @return Utilisateur
-     */
-    public function setVerification($verification)
-    {
-        $this->verification = $verification;
-
-        return $this;
-    }
-
-    /**
-     * Get verification
-     *
-     * @return boolean 
-     */
-    public function getVerification()
-    {
-        return $this->verification;
-    }
 }
